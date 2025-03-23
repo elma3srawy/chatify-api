@@ -16,30 +16,16 @@ class AuthController extends Controller
 
     public function register(RegisterRequest $request): JsonResponse
     {
-        $token = $this->auth->register($request);
-
-        return response()->json([
-            'message' => 'Registered successfully',
-            'token' => $token,
-        ], 201);
+        return $this->auth->register($request);
     }
 
     public function login(LoginRequest $request): JsonResponse
     {
-        $token = $this->auth->login($request);
-
-        return response()->json([
-            'message' => 'Logged in successfully',
-            'token' => $token,
-        ], 200);
+        return $this->auth->login($request);
     }
 
     public function logout(Request $request): JsonResponse
     {
-        $this->auth->logout($request);
-
-        return response()->json([
-            'message' => 'Logged out successfully',
-        ], 200);
+        return  $this->auth->logout($request);
     }
 }

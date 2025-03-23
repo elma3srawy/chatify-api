@@ -3,10 +3,11 @@
 namespace App\Auth;
 
 use Illuminate\Http\Request;
+use Illuminate\Http\JsonResponse;
 
 interface Authenticate
 {
-    public function register(Request $request): string;
-    public function login(Request $request): string;
-    public function logout(Request $request): void;
+    public function register(Request $request):JsonResponse;
+    public function login(Request $request):JsonResponse;
+    public function logout(Request $request):JsonResponse;
 }

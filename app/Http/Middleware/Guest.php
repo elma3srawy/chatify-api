@@ -15,13 +15,12 @@ class Guest
      */
     public function handle(Request $request, Closure $next): Response
     {
-        if ($request->user() && $request->user()->currentAccessToken()) {
+        if (($request->user() || $request->user()?->currentAccessToken()) && $request->acceptsJson()) {
             return response()->json([
                 'message' => 'You are already authenticated. Please log out to access this page.',
 
-            ], Response::HTTP_FORBIDDEN);
+            ], status: Response::HTTP_FORBIDDEN);
         }
-
         // Allow unauthenticated users to proceed
         return $next($request);
     }

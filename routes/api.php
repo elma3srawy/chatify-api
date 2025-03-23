@@ -28,7 +28,7 @@ Route::middleware(['auth:sanctum'])->group(function () {
         Route::post('/send-message' , "sendMessage");
         Route::post('/set-online' , "setOnline");
         Route::post('/set-offline' , "setOffline");
-        
+
     });
 
 });
